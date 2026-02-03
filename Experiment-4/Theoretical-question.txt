@@ -1,0 +1,9 @@
+WHY DOES BUILDING A HEAP TAKE O(n) AND NOT O(nlogn)?
+
+Building a heap is O(n), not O(n log n), because heapify doesn’t cost log n for most nodes.
+In a complete binary tree, half the nodes are leaves, so heapify on them costs 0.
+A quarter of the nodes are just above leaves, costing at most 1 step.
+Only a few nodes near the top have height close to log n.
+So the work is spread unevenly i.e. many cheap operations, very few expensive ones.
+Mathematically, the total work sums to a constant times n.
+Hence, building a heap runs in linear time O(n).
