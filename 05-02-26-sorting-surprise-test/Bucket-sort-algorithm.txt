@@ -1,0 +1,70 @@
+/*
+UID: 24BCS11540
+BUCKET SORT
+
+Step 1:
+Create n empty buckets, where n is the number of elements in the array.
+
+Step 2:
+For each element x in the array, compute the bucket index as:
+index = floor(n * x)
+Insert x into bucket[index].
+
+Step 3:
+After inserting all elements into their respective buckets,
+sort each bucket using a stable sorting algorithm.
+
+Step 4:
+Concatenate all buckets in order from index 0 to n-1
+to obtain the sorted array.
+
+DRY RUN:
+
+arr = [0.73, 0.45, 0.78, 0.32, 0.89, 0.12, 0.74, 0.56, 0.45, 0.33]
+n = 10
+
+Bucket index = floor(n * element)
+
+0.73 * 10 = 7.3  -> bucket 7
+0.45 * 10 = 4.5  -> bucket 4
+0.78 * 10 = 7.8  -> bucket 7
+0.32 * 10 = 3.2  -> bucket 3
+0.89 * 10 = 8.9  -> bucket 8
+0.12 * 10 = 1.2  -> bucket 1
+0.74 * 10 = 7.4  -> bucket 7
+0.56 * 10 = 5.6  -> bucket 5
+0.45 * 10 = 4.5  -> bucket 4
+0.33 * 10 = 3.3  -> bucket 3
+
+Buckets after insertion:
+
+Bucket 0: []
+Bucket 1: [0.12]
+Bucket 2: []
+Bucket 3: [0.32, 0.33]
+Bucket 4: [0.45, 0.45]
+Bucket 5: [0.56]
+Bucket 6: []
+Bucket 7: [0.73, 0.78, 0.74]
+Bucket 8: [0.89]
+Bucket 9: []
+
+After sorting each bucket:
+
+Bucket 3: [0.32, 0.33]
+Bucket 4: [0.45, 0.45]
+Bucket 7: [0.73, 0.74, 0.78]
+
+Final sorted array after concatenation:
+
+[0.12, 0.32, 0.33, 0.45, 0.45, 0.56, 0.73, 0.74, 0.78, 0.89]
+
+COMPLEXITY:
+
+Time Complexity:
+Best/Average case: O(n)
+Worst case: O(n^2)
+
+Space Complexity:
+O(n + k)
+*/
