@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body data-page="user-dashboard">
+  <div class="page-shell page-shell--narrow">
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">FD</span>
+        <span class="brand-copy">
+          <strong>Food Delivery System</strong>
+          <span>User Dashboard</span>
+        </span>
+      </a>
+
+      <nav class="topnav">
+        <a class="nav-link nav-link--primary" href="index.html">Logout</a>
+      </nav>
+    </header>
+
+    <main class="single-column">
+      <section class="surface-card reveal">
+        <span class="panel-label">User</span>
+        <h2>Place Order</h2>
+
+        <form onsubmit="event.preventDefault(); placeOrder();">
+          <div class="field-grid">
+            <div>
+              <label for="ud_username">Username</label>
+              <input id="ud_username" placeholder="Enter username"/>
+            </div>
+            <div>
+              <label for="ud_rest">Restaurant</label>
+              <select id="ud_rest"></select>
+            </div>
+            <div>
+              <label for="ud_dest">Delivery Location</label>
+              <select id="ud_dest"></select>
+            </div>
+          </div>
+
+          <div id="ud_status" class="inline-status" hidden></div>
+
+          <div class="button-row">
+            <button id="btn-place-order" class="button-primary button-block" type="submit">Place Order</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

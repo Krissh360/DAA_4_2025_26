@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Food Delivery System</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body data-page="auth">
+  <div class="page-shell page-shell--auth">
+    <header class="topbar topbar--centered">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">FD</span>
+        <span class="brand-copy">
+          <strong>Food Delivery System</strong>
+          <span>Register or sign in to continue.</span>
+        </span>
+      </a>
+    </header>
+
+    <main class="auth-shell">
+      <section class="surface-card auth-card reveal">
+        <div class="segmented-control segmented-control--two" role="tablist" aria-label="Authentication mode">
+          <button class="segment-button is-active" data-entry-button="login" type="button" onclick="showEntry('login')">Login</button>
+          <button class="segment-button" data-entry-button="signup" type="button" onclick="showEntry('signup')">Register</button>
+        </div>
+
+        <div class="entry-panel is-active" data-entry-panel="login">
+          <h1>Sign in</h1>
+          <p class="hero-copy">Select your role and enter the required credentials.</p>
+
+          <div class="segmented-control" role="tablist" aria-label="Login role">
+            <button class="segment-button is-active" data-auth-button="user" type="button" onclick="showUser()">User</button>
+            <button class="segment-button" data-auth-button="rider" type="button" onclick="showRider()">Rider</button>
+            <button class="segment-button" data-auth-button="admin" type="button" onclick="showAdmin()">Admin</button>
+          </div>
+
+          <div id="login_feedback" class="inline-status" hidden></div>
+
+          <form class="auth-panel is-active" data-auth-panel="user" onsubmit="event.preventDefault(); loginUser();">
+            <div class="field-grid">
+              <div>
+                <label for="lu_email">Email</label>
+                <input id="lu_email" type="email" placeholder="Enter email"/>
+              </div>
+              <div>
+                <label for="lu_pass">Password</label>
+                <input id="lu_pass" type="password" placeholder="Enter password"/>
+              </div>
+            </div>
+            <div class="button-row">
+              <button id="btn-login-user" class="button-primary button-block" type="submit">Login</button>
+            </div>
+          </form>
+
+          <form class="auth-panel" data-auth-panel="rider" onsubmit="event.preventDefault(); loginRider();">
+            <div class="field-grid">
+              <div>
+                <label for="lr_name">Rider Name</label>
+                <input id="lr_name" placeholder="Enter rider name"/>
+              </div>
+              <div>
+                <label for="lr_pass">Password</label>
+                <input id="lr_pass" type="password" placeholder="Enter password"/>
+              </div>
+            </div>
+            <div class="button-row">
+              <button id="btn-login-rider" class="button-primary button-block" type="submit">Login</button>
+            </div>
+          </form>
+
+          <form class="auth-panel" data-auth-panel="admin" onsubmit="event.preventDefault(); loginAdmin();">
+            <div class="field-grid">
+              <div>
+                <label for="la_name">Admin Name</label>
+                <input id="la_name" placeholder="Enter admin name"/>
+              </div>
+              <div>
+                <label for="la_pass">Password</label>
+                <input id="la_pass" type="password" placeholder="Enter password"/>
+              </div>
+            </div>
+            <div class="button-row">
+              <button id="btn-login-admin" class="button-primary button-block" type="submit">Login</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="entry-panel" data-entry-panel="signup">
+          <h1>Register</h1>
+          <p class="hero-copy">Create an account for the selected role.</p>
+
+          <div class="segmented-control" role="tablist" aria-label="Registration role">
+            <button class="segment-button is-active" data-signup-button="user" type="button" onclick="showSignupUser()">User</button>
+            <button class="segment-button" data-signup-button="admin" type="button" onclick="showSignupAdmin()">Admin</button>
+            <button class="segment-button" data-signup-button="rider" type="button" onclick="showSignupRider()">Rider</button>
+          </div>
+
+          <form class="auth-panel is-active" data-signup-panel="user" onsubmit="event.preventDefault(); signupUser();">
+            <div class="field-grid">
+              <div>
+                <label for="su_name">Name</label>
+                <input id="su_name" placeholder="Full name"/>
+              </div>
+              <div>
+                <label for="su_username">Username</label>
+                <input id="su_username" placeholder="Username"/>
+              </div>
+              <div>
+                <label for="su_email">Email</label>
+                <input id="su_email" type="email" placeholder="Enter email"/>
+              </div>
+              <div>
+                <label for="su_pass">Numeric Password</label>
+                <input id="su_pass" type="password" inputmode="numeric" placeholder="Digits only"/>
+              </div>
+            </div>
+            <div id="su_status" class="inline-status" hidden></div>
+            <div class="button-row">
+              <button id="btn-signup-user" class="button-primary button-block" type="submit">Create Account</button>
+            </div>
+          </form>
+
+          <form class="auth-panel" data-signup-panel="admin" onsubmit="event.preventDefault(); signupAdmin();">
+            <div class="field-grid">
+              <div>
+                <label for="sa_name">Admin Name</label>
+                <input id="sa_name" placeholder="Admin name"/>
+              </div>
+              <div>
+                <label for="sa_pass">Numeric Password</label>
+                <input id="sa_pass" type="password" inputmode="numeric" placeholder="Digits only"/>
+              </div>
+            </div>
+            <div id="sa_status" class="inline-status" hidden></div>
+            <div class="button-row">
+              <button id="btn-signup-admin" class="button-primary button-block" type="submit">Create Account</button>
+            </div>
+          </form>
+
+          <form class="auth-panel" data-signup-panel="rider" onsubmit="event.preventDefault(); signupRider();">
+            <div class="field-grid">
+              <div>
+                <label for="sr_name">Rider Name</label>
+                <input id="sr_name" placeholder="Rider name"/>
+              </div>
+              <div>
+                <label for="sr_pass">Numeric Password</label>
+                <input id="sr_pass" type="password" inputmode="numeric" placeholder="Digits only"/>
+              </div>
+              <div>
+                <label for="sr_loc">Starting Location</label>
+                <select id="sr_loc"></select>
+              </div>
+            </div>
+            <div id="sr_status" class="inline-status" hidden></div>
+            <div class="button-row">
+              <button id="btn-signup-rider" class="button-primary button-block" type="submit">Create Account</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

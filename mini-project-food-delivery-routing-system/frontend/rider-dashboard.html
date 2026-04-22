@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Rider Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body data-page="rider-dashboard">
+  <div class="page-shell page-shell--narrow">
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">FD</span>
+        <span class="brand-copy">
+          <strong>Food Delivery System</strong>
+          <span>Rider Dashboard</span>
+        </span>
+      </a>
+
+      <nav class="topnav">
+        <a class="nav-link nav-link--primary" href="index.html">Logout</a>
+      </nav>
+    </header>
+
+    <main class="single-column--wide">
+      <section class="surface-card reveal stack-tight">
+        <span class="panel-label">Rider</span>
+        <h2>Pending Orders</h2>
+
+        <div class="compact-grid">
+          <div>
+            <label for="rd_riderId">Rider ID</label>
+            <input id="rd_riderId" placeholder="Enter rider ID"/>
+          </div>
+          <div>
+            <button id="btn-view-pending" class="button-secondary button-block" type="button" onclick="viewPending()">Refresh</button>
+          </div>
+        </div>
+
+        <div id="rd_list" class="output-panel output-panel--compact">Loading pending orders...</div>
+
+        <div class="compact-grid">
+          <div>
+            <label for="rd_orderId">Order ID</label>
+            <input id="rd_orderId" placeholder="Enter order ID"/>
+          </div>
+          <div>
+            <button id="btn-accept-order" class="button-primary button-block" type="button" onclick="acceptOrder()">Accept Order</button>
+          </div>
+        </div>
+
+        <div id="rd_status" class="inline-status" hidden></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

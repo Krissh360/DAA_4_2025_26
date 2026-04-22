@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body data-page="admin-dashboard">
+  <div class="page-shell page-shell--narrow">
+    <header class="topbar">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">FD</span>
+        <span class="brand-copy">
+          <strong>Food Delivery System</strong>
+          <span>Admin Dashboard</span>
+        </span>
+      </a>
+
+      <nav class="topnav">
+        <a class="nav-link nav-link--primary" href="index.html">Logout</a>
+      </nav>
+    </header>
+
+    <main class="single-column--wide">
+      <section class="surface-card reveal stack-tight">
+        <span class="panel-label">Admin</span>
+        <h2>System Records</h2>
+
+        <div class="action-grid">
+          <button id="btn-view-users" class="button-secondary button-block" type="button" onclick="viewUsers()">Users</button>
+          <button id="btn-view-riders" class="button-secondary button-block" type="button" onclick="viewRiders()">Riders</button>
+          <button id="btn-view-orders" class="button-secondary button-block" type="button" onclick="viewOrders()">Orders</button>
+        </div>
+
+        <div class="field-grid">
+          <div>
+            <label for="ad_uid">Remove User ID</label>
+            <input id="ad_uid" placeholder="Enter user ID"/>
+          </div>
+          <div>
+            <label for="ad_rid">Remove Rider ID</label>
+            <input id="ad_rid" placeholder="Enter rider ID"/>
+          </div>
+        </div>
+
+        <div class="dual-action">
+          <button id="btn-remove-user" class="button-danger button-block" type="button" onclick="removeUser()">Delete User</button>
+          <button id="btn-remove-rider" class="button-danger button-block" type="button" onclick="removeRider()">Delete Rider</button>
+        </div>
+
+        <div id="ad_status" class="inline-status" hidden></div>
+        <pre id="ad_out" class="output-panel output-panel--tall">Select an action to view data.</pre>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
